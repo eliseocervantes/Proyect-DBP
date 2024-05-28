@@ -1,4 +1,4 @@
 package org.ActividadFisica.Domain;
 
-public class ActividadFisica {
+public class ActividadFisica  {
 }
