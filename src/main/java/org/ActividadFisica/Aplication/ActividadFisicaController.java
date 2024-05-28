@@ -34,8 +34,8 @@ public class ActividadFisicaController {
         ActividadFisicaService savedMedioDeTransporte = mediosTransporteService.guardarMedioDeTransporte(medioDeTransporte);
         return new ResponseEntity<>(savedMedioDeTransporte, HttpStatus.CREATED);
     }
-    //corrregir
-    //@PutMapping("/{id}")
+    //
+    @PutMapping("/{id}")
     //public ResponseEntity<Medios_Transporte> actualizarMedioDeTransporte(@PathVariable Long id, @RequestBody Medios_Transporte medioDeTransporte) {
     //    medioDeTransporte.setId(id);
     //    Medios_Transporte updatedMedioDeTransporte = mediosTransporteService.actualizarMedioDeTransporte(medioDeTransporte);
