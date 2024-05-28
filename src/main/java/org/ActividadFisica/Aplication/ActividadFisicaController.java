@@ -34,18 +34,19 @@ public class ActividadFisicaController {
         ActividadFisicaService savedMedioDeTransporte = mediosTransporteService.guardarMedioDeTransporte(medioDeTransporte);
         return new ResponseEntity<>(savedMedioDeTransporte, HttpStatus.CREATED);
     }
+
     //
     @PutMapping("/{id}")
-    //public ResponseEntity<Medios_Transporte> actualizarMedioDeTransporte(@PathVariable Long id, @RequestBody Medios_Transporte medioDeTransporte) {
-    //    medioDeTransporte.setId(id);
-    //    Medios_Transporte updatedMedioDeTransporte = mediosTransporteService.actualizarMedioDeTransporte(medioDeTransporte);
-    //    return new ResponseEntity<>(updatedMedioDeTransporte, HttpStatus.OK);
-    //}
+    public ResponseEntity<Medios_Transporte> actualizarMedioDeTransporte(@PathVariable Long id, @RequestBody Medios_Transporte medioDeTransporte) {
+        medioDeTransporte.setId(id);
+        Medios_Transporte updatedMedioDeTransporte = mediosTransporteService.actualizarMedioDeTransporte(medioDeTransporte);
+        return new ResponseEntity<>(updatedMedioDeTransporte, HttpStatus.OK);
 
-    @DeleteMapping("/{id}")
-    public ResponseEntity<Void> eliminarMedioDeTransportePorId(@PathVariable Long id) {
-        mediosTransporteService.eliminarMedioDeTransportePorId(id);
-        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+
+        @DeleteMapping("/{id}")
+        public ResponseEntity<Void> eliminarMedioDeTransportePorId (@PathVariable Long id){
+            mediosTransporteService.eliminarMedioDeTransportePorId(id);
+            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+        }
     }
-
 }

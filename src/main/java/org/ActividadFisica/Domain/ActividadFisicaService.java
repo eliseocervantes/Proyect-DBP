@@ -1,57 +1,40 @@
 package org.ActividadFisica.Domain;
 
-import org.Usuario.Domain.Usuario;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.ManyToOne;
-import lombok.Data;
+import org.ActividadFisica.Infrastructure.ActividadFisicaRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
-@Data
-@Entity
+import java.util.List;
+import java.util.Optional;
+
+@Service
 public class ActividadFisicaService {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long idTransporte;
-    private String nombre;
-    private String marca;
-    @ManyToOne
-    private Usuario usuario;
+    private final ActividadFisicaRepository actividadFisicaRepository;
 
-    // Constructor por defecto
-    public ActividadFisicaService() {}
-
-    // Constructor con valores iniciales
-    public ActividadFisicaService(String nombre, String marca) {
-        this.nombre = nombre;
-        this.marca = marca;
+    @Autowired
+    public ActividadFisicaService(ActividadFisicaRepository actividadFisicaRepository) {
+        this.actividadFisicaRepository = actividadFisicaRepository;
     }
 
-    // Getters y Setters
-
-    public Long getIdTransporte() {
-        return idTransporte;
+    public List<ActividadFisica> obtenerTodasLasActividadesFisicas() {
+        return actividadFisicaRepository.findAll();
     }
 
-    public void setIdTransporte(Long idTransporte) {
-        this.idTransporte = idTransporte;
+    public Optional<ActividadFisica> obtenerActividadFisicaPorId(Long id) {
+        return actividadFisicaRepository.findById(id);
     }
 
-    public String getNombre() {
-        return nombre;
+    public ActividadFisica guardarActividadFisica(ActividadFisica actividadFisica) {
+        return actividadFisicaRepository.save(actividadFisica);
     }
 
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
+    public ActividadFisica actualizarActividadFisica(Long id, ActividadFisica actividadFisica) {
+        actividadFisica.setIdActividad(id);
+        return actividadFisicaRepository.save(actividadFisica);
     }
 
-    public String getMarca() {
-        return marca;
-    }
-
-    public void setMarca(String marca) {
-        this.marca = marca;
+    public void eliminarActividadFisicaPorId(Long id) {
+        actividadFisicaRepository.deleteById(id);
     }
 }
