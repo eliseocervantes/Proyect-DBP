@@ -13,7 +13,7 @@ import org.springframework.data.annotation.Id;
 
 @Data
 @Entity
-public class Medios_Transporte {
+public class MediosTransporte {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -24,10 +24,10 @@ public class Medios_Transporte {
     @ManyToOne
     private Usuario usuario;
     // Constructor por defecto
-    public Medios_Transporte() {}
+    public MediosTransporte() {}
 
     // Constructor con valores iniciales
-    public Medios_Transporte(String nombre, String marca) {
+    public MediosTransporte(String nombre, String marca) {
         this.nombre = nombre;
         this.marca = marca;
     }

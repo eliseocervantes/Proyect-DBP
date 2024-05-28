@@ -1,7 +1,7 @@
 package org.Historial.Aplication;
 
+import org.Historial.Domain.Historial;
 import org.Historial.Domain.HistorialService;
-import org.Medios_Transporte.Domain.Medios_Transporte_Service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -14,38 +14,36 @@ import java.util.Optional;
 @RequestMapping(path="")
 public class HistorialController {
     @Autowired
-    private Medios_Transporte_Service mediosTransporteService;
+    private HistorialService historialService;
 
     @GetMapping
-    public ResponseEntity<List<HistorialService>> obtenerTodosLosMediosDeTransporte() {
-        List<HistorialService> mediosTransporteList = mediosTransporteService.obtenerTodosLosMediosDeTransporte();
-        return new ResponseEntity<>(mediosTransporteList, HttpStatus.OK);
+    public ResponseEntity<List<Historial>> obtenerTodosLosHistoriales() {
+        List<Historial> historialList = historialService.obtenerTodosLosHistoriales();
+        return new ResponseEntity<>(historialList, HttpStatus.OK);
     }
 
-    @GetMapping("/{id}") //corregir
-    public ResponseEntity<HistorialService> obtenerMedioDeTransportePorId(@PathVariable Long id) {
-        Optional<HistorialService> medioDeTransporte = mediosTransporteService.obtenerMedioDeTransportePorId(id);
-        return medioDeTransporte.map(value -> new ResponseEntity<>(value, HttpStatus.OK))
+    @GetMapping("/{id}")
+    public ResponseEntity<Historial> obtenerHistorialPorId(@PathVariable Long id) {
+        Optional<Historial> historial = historialService.obtenerHistorialPorId(id);
+        return historial.map(value -> new ResponseEntity<>(value, HttpStatus.OK))
                 .orElseGet(() -> new ResponseEntity<>(HttpStatus.NOT_FOUND));
     }
 
     @PostMapping
-    public ResponseEntity<HistorialService> guardarMedioDeTransporte(@RequestBody HistorialService medioDeTransporte) {
-        HistorialService savedMedioDeTransporte = mediosTransporteService.guardarMedioDeTransporte(medioDeTransporte);
-        return new ResponseEntity<>(savedMedioDeTransporte, HttpStatus.CREATED);
+    public ResponseEntity<Historial> guardarHistorial(@RequestBody Historial historial) {
+        Historial savedHistorial = historialService.guardarHistorial(historial);
+        return new ResponseEntity<>(savedHistorial, HttpStatus.CREATED);
     }
-    //
+
     @PutMapping("/{id}")
-    //public ResponseEntity<Medios_Transporte> actualizarMedioDeTransporte(@PathVariable Long id, @RequestBody Medios_Transporte medioDeTransporte) {
-    //    medioDeTransporte.setId(id);
-    //    Medios_Transporte updatedMedioDeTransporte = mediosTransporteService.actualizarMedioDeTransporte(medioDeTransporte);
-    //    return new ResponseEntity<>(updatedMedioDeTransporte, HttpStatus.OK);
-    //}
+    public ResponseEntity<Historial> actualizarHistorial(@PathVariable Long id, @RequestBody Historial historial) {
+        Historial updatedHistorial = historialService.actualizarHistorial(id, historial);
+        return new ResponseEntity<>(updatedHistorial, HttpStatus.OK);
+    }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> eliminarMedioDeTransportePorId(@PathVariable Long id) {
-        mediosTransporteService.eliminarMedioDeTransportePorId(id);
+    public ResponseEntity<Void> eliminarHistorialPorId (@PathVariable Long id){
+        historialService.eliminarHistorialPorId(id);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
-
 }

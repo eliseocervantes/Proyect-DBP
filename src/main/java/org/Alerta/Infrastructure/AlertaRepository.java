@@ -1,9 +1,9 @@
 package org.Alerta.Infrastructure;
 
-import org.Alerta.Domain.AlertaService;
+import org.Alerta.Domain.Alerta;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface Alerta_Repository extends JpaRepository<AlertaService,Long> {
+public interface AlertaRepository extends JpaRepository<Alerta, Long> {
 }

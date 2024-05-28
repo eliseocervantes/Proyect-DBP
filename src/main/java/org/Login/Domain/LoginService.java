@@ -1,60 +1,40 @@
-
 package org.Login.Domain;
 
+import org.Login.Infrastructure.LoginRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
+import java.util.List;
+import java.util.Optional;
 
-import org.Usuario.Domain.Usuario;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.ManyToOne;
-import lombok.Data;
-import org.springframework.data.annotation.Id;
-
-@Data
-@Entity
+@Service
 public class LoginService {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @jakarta.persistence.Id
-    private Long idTransporte;
-    private String nombre;
-    private String marca;
-    @ManyToOne
-    private Usuario usuario;
-    // Constructor por defecto
-    public LoginService() {}
+    private final LoginRepository loginRepository;
 
-    // Constructor con valores iniciales
-    public LoginService(String nombre, String marca) {
-        this.nombre = nombre;
-        this.marca = marca;
+    @Autowired
+    public LoginService(LoginRepository loginRepository) {
+        this.loginRepository = loginRepository;
     }
 
-    // Getters y Setters
-
-    public Long getIdTransporte() {
-        return idTransporte;
+    public List<Login> obtenerTodosLosLogins() {
+        return loginRepository.findAll();
     }
 
-    public void setIdTransporte(Long idTransporte) {
-        this.idTransporte = idTransporte;
+    public Optional<Login> obtenerLoginPorId(Long id) {
+        return loginRepository.findById(id);
     }
 
-    public String getNombre() {
-        return nombre;
+    public Login guardarLogin(Login login) {
+        return loginRepository.save(login);
     }
 
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
+    public Login actualizarLogin(Long id, Login login) {
+        login.setIdLogin(id);
+        return loginRepository.save(login);
     }
 
-    public String getMarca() {
-        return marca;
-    }
-
-    public void setMarca(String marca) {
-        this.marca = marca;
+    public void eliminarLoginPorId(Long id) {
+        loginRepository.deleteById(id);
     }
 }

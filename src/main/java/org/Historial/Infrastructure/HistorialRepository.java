@@ -1,9 +1,9 @@
 package org.Historial.Infrastructure;
 
-import org.Historial.Domain.HistorialService;
+import org.Historial.Domain.Historial;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface HistorialRepository extends JpaRepository<HistorialService,Long> {
+public interface HistorialRepository extends JpaRepository<Historial, Long> {
 }

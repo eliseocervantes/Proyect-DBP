@@ -8,28 +8,28 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
-public class Medios_Transporte_Service {
+public class MediosTransporteService {
 
     private final Medios_Transporte_Repository mediosTransporteRepository;
 
     @Autowired
-    public Medios_Transporte_Service(Medios_Transporte_Repository mediosTransporteRepository) {
+    public MediosTransporteService(Medios_Transporte_Repository mediosTransporteRepository) {
         this.mediosTransporteRepository = mediosTransporteRepository;
     }
 
-    public List<Medios_Transporte> obtenerTodosLosMediosDeTransporte() {
+    public List<MediosTransporte> obtenerTodosLosMediosDeTransporte() {
         return mediosTransporteRepository.findAll();
     }
 
-    public Optional<Medios_Transporte> obtenerMedioDeTransportePorId(Long id) {
+    public Optional<MediosTransporte> obtenerMedioDeTransportePorId(Long id) {
         return mediosTransporteRepository.findById(id);
     }
 
-    public Medios_Transporte guardarMedioDeTransporte(Medios_Transporte medioDeTransporte) {
+    public MediosTransporte guardarMedioDeTransporte(MediosTransporte medioDeTransporte) {
         return mediosTransporteRepository.save(medioDeTransporte);
     }
 
-    public Medios_Transporte actualizarMedioDeTransporte(Long id, Medios_Transporte medioDeTransporte) {
+    public MediosTransporte actualizarMedioDeTransporte(Long id, MediosTransporte medioDeTransporte) {
         medioDeTransporte.setIdTransporte(id);
         return mediosTransporteRepository.save(medioDeTransporte);
     }

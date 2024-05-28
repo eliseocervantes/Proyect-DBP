@@ -1,7 +1,7 @@
 package org.Usuario.Domain;
 
 
-import org.Medios_Transporte.Domain.Medios_Transporte;
+import org.Medios_Transporte.Domain.MediosTransporte;
 import jakarta.persistence.*;
 import lombok.Data;
 import org.springframework.data.annotation.Id;
@@ -21,7 +21,7 @@ public class Usuario {
     private int edad;
     private String sexo;
     @OneToMany(mappedBy = "usuario", cascade = CascadeType.ALL)
-    private List<Medios_Transporte> mediosTransporte;
+    private List<MediosTransporte> mediosTransporte;
 
 
 

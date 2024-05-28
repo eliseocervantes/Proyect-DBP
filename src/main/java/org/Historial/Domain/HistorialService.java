@@ -1,54 +1,40 @@
 package org.Historial.Domain;
 
-import lombok.Data;
-import org.Usuario.Domain.Usuario;
+import org.Historial.Infrastructure.HistorialRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
-import javax.persistence.*;
+import java.util.List;
+import java.util.Optional;
 
-@Data
-@Entity
+@Service
 public class HistorialService {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long idTransporte;
-    private String nombre;
-    private String marca;
-    @ManyToOne
-    private Usuario usuario;
+    private final HistorialRepository historialRepository;
 
-    // Constructor por defecto
-    public HistorialService() {}
-
-    // Constructor con valores iniciales
-    public HistorialService(String nombre, String marca) {
-        this.nombre = nombre;
-        this.marca = marca;
+    @Autowired
+    public HistorialService(HistorialRepository historialRepository) {
+        this.historialRepository = historialRepository;
     }
 
-    // Getters y Setters
-
-    public Long getIdTransporte() {
-        return idTransporte;
+    public List<Historial> obtenerTodosLosHistoriales() {
+        return historialRepository.findAll();
     }
 
-    public void setIdTransporte(Long idTransporte) {
-        this.idTransporte = idTransporte;
+    public Optional<Historial> obtenerHistorialPorId(Long id) {
+        return historialRepository.findById(id);
     }
 
-    public String getNombre() {
-        return nombre;
+    public Historial guardarHistorial(Historial historial) {
+        return historialRepository.save(historial);
     }
 
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
+    public Historial actualizarHistorial(Long id, Historial historial) {
+        historial.setIdHistorial(id);
+        return historialRepository.save(historial);
     }
 
-    public String getMarca() {
-        return marca;
-    }
-
-    public void setMarca(String marca) {
-        this.marca = marca;
+    public void eliminarHistorialPorId(Long id) {
+        historialRepository.deleteById(id);
     }
 }
