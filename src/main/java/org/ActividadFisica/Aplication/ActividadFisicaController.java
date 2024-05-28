@@ -22,7 +22,7 @@ public class ActividadFisicaController {
         return new ResponseEntity<>(mediosTransporteList, HttpStatus.OK);
     }
 
-    @GetMapping("/{id}")
+    @GetMapping("/{id}") //corregir
     public ResponseEntity<ActividadFisicaService> obtenerMedioDeTransportePorId(@PathVariable Long id) {
         Optional<ActividadFisicaService> medioDeTransporte = mediosTransporteService.obtenerMedioDeTransportePorId(id);
         return medioDeTransporte.map(value -> new ResponseEntity<>(value, HttpStatus.OK))
