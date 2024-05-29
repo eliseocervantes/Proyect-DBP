@@ -15,6 +15,7 @@ public class Login {
     private String emailLogin;
     @ManyToOne
     private Usuario usuario;
+
     // Constructor por defecto
     public Login() {}
 
@@ -48,5 +49,13 @@ public class Login {
 
     public void setEmailLogin(String emailLogin) {
         this.emailLogin = emailLogin;
+    }
+
+    public Usuario getUsuario() {
+        return usuario;
+    }
+
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
     }
 }

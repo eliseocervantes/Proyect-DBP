@@ -1,10 +1,8 @@
 package org.Usuario.Domain;
 
-
 import org.Medios_Transporte.Domain.MediosTransporte;
 import jakarta.persistence.*;
 import lombok.Data;
-import org.springframework.data.annotation.Id;
 
 import java.util.List;
 
@@ -13,7 +11,6 @@ import java.util.List;
 public class Usuario {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @jakarta.persistence.Id
     private Long idUsuario;
     private String nombre;
     private String apellido;
@@ -22,8 +19,6 @@ public class Usuario {
     private String sexo;
     @OneToMany(mappedBy = "usuario", cascade = CascadeType.ALL)
     private List<MediosTransporte> mediosTransporte;
-
-
 
     // Constructor por defecto
     public Usuario() {}
@@ -87,4 +82,11 @@ public class Usuario {
         this.sexo = sexo;
     }
 
+    public List<MediosTransporte> getMediosTransporte() {
+        return mediosTransporte;
+    }
+
+    public void setMediosTransporte(List<MediosTransporte> mediosTransporte) {
+        this.mediosTransporte = mediosTransporte;
+    }
 }
