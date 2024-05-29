@@ -2,7 +2,10 @@ package org.Historial.Domain;
 
 import jakarta.persistence.*;
 import lombok.Data;
+import org.ActividadFisica.Domain.ActividadFisica;
 import org.Ruta.Domain.Ruta;
+
+import java.util.List;
 
 @Data
 @Entity
@@ -20,6 +23,8 @@ public class Historial {
     private Ruta ruta;
     // Constructor por defecto
     public Historial() {}
+    @OneToMany(mappedBy = "historial", cascade = CascadeType.ALL)
+    private List<ActividadFisica> actividadFisica;
 
     // Constructor con valores iniciales
     public Historial(Double tiempo, Double velocidad, Long idRuta, Long idActividad) {

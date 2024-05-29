@@ -3,6 +3,8 @@ package org.Ruta.Domain;
 
 import jakarta.persistence.*;
 import lombok.Data;
+import org.Alerta.Domain.Alerta;
+import org.Medios_Transporte.Domain.MediosTransporte;
 import org.Usuario.Domain.Usuario;
 
 @Data
@@ -20,7 +22,11 @@ public class Ruta {
     private Long idAlerta;
 
     @ManyToOne
-    private Usuario usuario;
+    private MediosTransporte mediosTransporte;
+    @OneToOne(mappedBy = "ruta")
+    private Alerta alerta;
+
+
     // Constructor por defecto
     public Ruta() {}
 

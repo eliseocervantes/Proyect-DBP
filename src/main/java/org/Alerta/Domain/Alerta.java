@@ -2,6 +2,7 @@ package org.Alerta.Domain;
 
 import jakarta.persistence.*;
 import lombok.Data;
+import org.Ruta.Domain.Ruta;
 import org.Usuario.Domain.Usuario;
 
 @Data
@@ -14,8 +15,9 @@ public class Alerta {
     private String colorDeAlerta;
     private String descripcion;
 
-    @ManyToOne
-    private Usuario usuario;
+    @OneToOne
+    private Ruta ruta;
+
 
     // Constructor por defecto
     public Alerta() {}

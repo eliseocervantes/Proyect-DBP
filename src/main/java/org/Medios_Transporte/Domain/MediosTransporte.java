@@ -1,15 +1,14 @@
-
 package org.Medios_Transporte.Domain;
 
 
 
+import jakarta.persistence.*;
+import org.Ruta.Domain.Ruta;
 import org.Usuario.Domain.Usuario;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.ManyToOne;
 import lombok.Data;
 import org.springframework.data.annotation.Id;
+
+import java.util.List;
 
 @Data
 @Entity
@@ -23,6 +22,9 @@ public class MediosTransporte {
     private String marca;
     @ManyToOne
     private Usuario usuario;
+    @OneToMany(mappedBy = "mediosTransporte", cascade = CascadeType.ALL)
+    private List<Ruta> rutas;
+
     // Constructor por defecto
     public MediosTransporte() {}
 
@@ -58,3 +60,4 @@ public class MediosTransporte {
         this.marca = marca;
     }
 }
+

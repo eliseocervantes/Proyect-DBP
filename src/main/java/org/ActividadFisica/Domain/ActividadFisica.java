@@ -2,6 +2,7 @@ package org.ActividadFisica.Domain;
 
 import jakarta.persistence.*;
 import lombok.Data;
+import org.Historial.Domain.Historial;
 import org.Usuario.Domain.Usuario;
 
 @Data
@@ -18,7 +19,8 @@ public class ActividadFisica {
     private Long idUsuario;
 
     @ManyToOne
-    private Usuario usuario;
+
+    private Historial historial;
     // Constructor por defecto
     public ActividadFisica() {}
 
