@@ -83,7 +83,7 @@ public class User implements UserDetails{
     public User() {
     }
 
-    public User(String firstName, String lastName, Date birthDate, String sex, String email, String password, int calorieGoal) {
+    public User(String firstName, String lastName, Date birthDate, Sex sex, String email, String password, int calorieGoal) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.birthDate = birthDate;
@@ -126,11 +126,11 @@ public class User implements UserDetails{
         this.birthDate = birthDate;
     }
 
-    public String getSex() {
+    public Sex getSex() {
         return sex;
     }
 
-    public void setSex(String sex) {
+    public void setSex(Sex sex) {
         this.sex = sex;
     }
 
