@@ -4,8 +4,6 @@ import org.Auth.dto.JwtAuthResponse;
 import org.Auth.dto.LoginReq;
 import org.Auth.dto.RegisterReq;
 import org.Auth.exceptions.UserAlreadyExistException;
-import org.Login.Domain.Login;
-import org.Login.Infrastructure.LoginRepository;
 import org.Usuario.Domain.Usuario;
 import org.Usuario.Infrastructure.UsuarioRepository;
 import org.config.JwtService;
@@ -57,5 +55,7 @@ public class AuthService {
         JwtAuthResponse response = new JwtAuthResponse();
         response.setToken(jwtService.generateToken(usuario));
         return response;
+      Apellido(req.getLastName());
+
     }
 }

@@ -15,7 +15,6 @@ public class Usuario {
     private String nombre;
     private String apellido;
     private String ocupacion;
-    private int edad;
     private String sexo;
     @OneToMany(mappedBy = "usuario", cascade = CascadeType.ALL)
     private List<MediosTransporte> mediosTransporte;
@@ -28,7 +27,6 @@ public class Usuario {
         this.nombre = nombre;
         this.apellido = apellido;
         this.ocupacion = ocupacion;
-        this.edad = edad;
         this.sexo = sexo;
     }
 
@@ -64,14 +62,6 @@ public class Usuario {
 
     public void setOcupacion(String ocupacion) {
         this.ocupacion = ocupacion;
-    }
-
-    public int getEdad() {
-        return edad;
-    }
-
-    public void setEdad(int edad) {
-        this.edad = edad;
     }
 
     public String getSexo() {
