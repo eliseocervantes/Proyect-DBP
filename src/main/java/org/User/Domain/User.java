@@ -2,51 +2,112 @@ package org.User.Domain;
 
 import jakarta.persistence.*;
 import lombok.Data;
+
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
+
+import java.time.ZonedDateTime;
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Date;
 
 @Data
 @Entity
-public class User {
+public class User implements UserDetails{
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long idUser;
-    private String name;
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    private Long id;
+
+    @Column(name = "first_name", nullable = false)
+    private String firstName;
+
+    @Column(name = "last_name", nullable = false)
     private String lastName;
+
+    @Column(name = "birth_date", nullable = false)
     private Date birthDate;
-    private String sex;
+
+    @Column(name = "sex", nullable = false)
+    private Sex sex;
+
+    @Column(name = "email", nullable = false)
     private String email;
+
+    @Column(name = "password", nullable = false)
     private String password;
-    private int objetivoCalorias;
+
+    @Column(name = "calorie_goal", nullable = false)
+    private int calorieGoal;
+
+    @Column(name = "created_at", nullable = false)
+    private ZonedDateTime createdAt;
+
+    @Override
+    public Collection<? extends GrantedAuthority> getAuthorities() {
+    return new ArrayList<>();
+    }
+
+    @Override
+    public String getUsername() {
+        return email;
+    }
+
+    @Override
+    public String getPassword() {
+        return password;
+    }
+
+    @Override
+    public boolean isAccountNonExpired() {
+        return true;
+    }
+
+    @Override
+    public boolean isAccountNonLocked() {
+        return true;
+    }
+
+    @Override
+    public boolean isCredentialsNonExpired() {
+        return true;
+    }
+
+    @Override
+    public boolean isEnabled() {
+        return true;
+    }
+
+
 
     public User() {
     }
 
-    public User(String name, String lastName, Date birthDate, String sex, String email, String password, int objetivoCalorias) {
-        this.name = name;
+    public User(String firstName, String lastName, Date birthDate, String sex, String email, String password, int calorieGoal) {
+        this.firstName = firstName;
         this.lastName = lastName;
         this.birthDate = birthDate;
         this.sex = sex;
         this.email = email;
         this.password = password;
-        this.objetivoCalorias = objetivoCalorias;
+        this.calorieGoal = calorieGoal;
     }
 
 
-    public Long getIdUser() {
-        return idUser;
+    public Long getId() {
+        return id;
     }
 
-    public void setIdUser(Long idUser) {
-        this.idUser = idUser;
+    public void setId(Long idUser) {
+        this.id = idUser;
     }
 
-    public String getName() {
-        return name;
+    public String getFirstName() {
+        return firstName;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setName(String firstName) {
+        this.firstName = firstName;
     }
 
     public String getLastName() {
