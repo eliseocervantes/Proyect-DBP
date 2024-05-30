@@ -2,7 +2,7 @@ package org.config;
 
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
-import org.Usuario.Domain.Usuario;
+import org.User.Domain.User;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
@@ -17,7 +17,7 @@ public class JwtService {
     @Value("${jwt.expiration}")
     private int expiration;
 
-    public String generateToken(Usuario usuario) {
+    public String generateToken(User usuario) {
         return Jwts.builder()
                 .setSubject(String.valueOf(usuario.getIdUsuario()))
                 .setIssuedAt(new Date())

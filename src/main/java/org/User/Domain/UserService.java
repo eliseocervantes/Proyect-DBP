@@ -1,25 +1,25 @@
-package org.Usuario.Domain;
+package org.User.Domain;
 
-import org.Usuario.Infrastructure.UsuarioRepository;
+import org.User.Infrastructure.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
-public class UsuarioService {
+public class UserService {
     @Autowired
-    UsuarioRepository usuarioRepository;
+    UserRepository usuarioRepository;
 
-    public List<Usuario> findAll() {
+    public List<User> findAll() {
         return usuarioRepository.findAll();
     }
 
-    public Usuario save(Usuario usuario) {
+    public User save(User usuario) {
         return usuarioRepository.save(usuario);
     }
 
-    public Usuario findById(Long id) {
+    public User findById(Long id) {
         return usuarioRepository.findById(id).orElse(null);
     }
 

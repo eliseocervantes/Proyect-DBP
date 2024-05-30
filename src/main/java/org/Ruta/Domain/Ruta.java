@@ -1,11 +1,7 @@
 package org.Ruta.Domain;
 
-
 import jakarta.persistence.*;
 import lombok.Data;
-import org.Alerta.Domain.Alerta;
-import org.Medios_Transporte.Domain.MediosTransporte;
-import org.Usuario.Domain.Usuario;
 
 @Data
 @Entity
@@ -15,29 +11,15 @@ public class Ruta {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idRuta;
     private Double distancia;
-    private Double tiempo;
     private String ubicacionInicial;
     private String ubicacionFinal;
-    private Long idTransporte;
-    private Long idAlerta;
 
-    @ManyToOne
-    private MediosTransporte mediosTransporte;
-    @OneToOne(mappedBy = "ruta")
-    private Alerta alerta;
-
-
-    // Constructor por defecto
     public Ruta() {}
 
-    // Constructor con valores iniciales
-    public Ruta(Double distancia, Double tiempo, String ubicacionInicial, String ubicacionFinal, Long idTransporte, Long idAlerta) {
+    public Ruta(Double distancia, String ubicacionInicial, String ubicacionFinal) {
         this.distancia = distancia;
-        this.tiempo = tiempo;
         this.ubicacionInicial = ubicacionInicial;
         this.ubicacionFinal = ubicacionFinal;
-        this.idTransporte = idTransporte;
-        this.idAlerta = idAlerta;
     }
 
 
@@ -57,14 +39,6 @@ public class Ruta {
         this.distancia = distancia;
     }
 
-    public Double getTiempo() {
-        return tiempo;
-    }
-
-    public void setTiempo(Double tiempo) {
-        this.tiempo = tiempo;
-    }
-
     public String getUbicacionInicial() {
         return ubicacionInicial;
     }
@@ -79,21 +53,5 @@ public class Ruta {
 
     public void setUbicacionFinal(String ubicacionFinal) {
         this.ubicacionFinal = ubicacionFinal;
-    }
-
-    public Long getIdTransporte() {
-        return idTransporte;
-    }
-
-    public void setIdTransporte(Long idTransporte) {
-        this.idTransporte = idTransporte;
-    }
-
-    public Long getIdAlerta() {
-        return idAlerta;
-    }
-
-    public void setIdAlerta(Long idAlerta) {
-        this.idAlerta = idAlerta;
     }
 }

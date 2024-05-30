@@ -1,6 +1,6 @@
-package org.Medios_Transporte.Domain;
+package org.Medio_Transporte.Domain;
 
-import org.Medios_Transporte.Infrastructure.Medios_Transporte_Repository;
+import org.Medio_Transporte.Infrastructure.MedioTransporteRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -8,12 +8,12 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
-public class MediosTransporteService {
+public class MedioTransporteService {
 
-    private final Medios_Transporte_Repository mediosTransporteRepository;
+    private final MedioTransporteRepository mediosTransporteRepository;
 
     @Autowired
-    public MediosTransporteService(Medios_Transporte_Repository mediosTransporteRepository) {
+    public MedioTransporteService(MedioTransporteRepository mediosTransporteRepository) {
         this.mediosTransporteRepository = mediosTransporteRepository;
     }
 

@@ -4,19 +4,19 @@ import org.Auth.dto.JwtAuthResponse;
 import org.Auth.dto.LoginReq;
 import org.Auth.dto.RegisterReq;
 import org.Auth.exceptions.UserAlreadyExistException;
-import org.Usuario.Domain.Usuario;
-import org.Usuario.Infrastructure.UsuarioRepository;
+import org.User.Domain.User;
+import org.User.Infrastructure.UserRepository;
 import org.config.JwtService;
 import org.springframework.stereotype.Service;
 
 @Service
 public class AuthService {
 
-    private final UsuarioRepository usuarioRepository;
+    private final UserRepository usuarioRepository;
     private final LoginRepository loginRepository;
     private final JwtService jwtService;
 
-    public AuthService(UsuarioRepository usuarioRepository, LoginRepository loginRepository, JwtService jwtService) {
+    public AuthService(UserRepository usuarioRepository, LoginRepository loginRepository, JwtService jwtService) {
         this.usuarioRepository = usuarioRepository;
         this.loginRepository = loginRepository;
         this.jwtService = jwtService;
@@ -29,7 +29,7 @@ public class AuthService {
         if (!req.getPassword().equals(login.getPassword()))
             throw new IllegalArgumentException("Password is incorrect");
 
-        Usuario usuario = usuarioRepository.findById(login.getIdUsuario())
+        User usuario = usuarioRepository.findById(login.getIdUsuario())
                 .orElseThrow(() -> new UsernameNotFoundException("User not found"));
 
         JwtAuthResponse response = new JwtAuthResponse();
@@ -41,7 +41,7 @@ public class AuthService {
         if (loginRepository.existsByEmail(req.getEmail()))
             throw new UserAlreadyExistException("Email is already registered");
 
-        Usuario usuario = new Usuario();
+        User usuario = new User();
         usuario.setNombre(req.getFirstName());
         usuario.setApellido(req.getLastName());
         usuarioRepository.save(usuario);

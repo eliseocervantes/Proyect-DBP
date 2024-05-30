@@ -2,8 +2,6 @@ package org.ActividadFisica.Domain;
 
 import jakarta.persistence.*;
 import lombok.Data;
-import org.Historial.Domain.Historial;
-import org.Usuario.Domain.Usuario;
 
 @Data
 @Entity
@@ -14,26 +12,18 @@ public class ActividadFisica {
     private Long idActividad;
     private Double peso;
     private Double altura;
-    private Integer cantidadDePasos;
-    private Double calorias;
-    private Long idUsuario;
+    private Double distanciaTotal;
+    private Double caloriasQuemadas;
 
-    @ManyToOne
-
-    private Historial historial;
-    // Constructor por defecto
     public ActividadFisica() {}
 
-    // Constructor con valores iniciales
-    public ActividadFisica(Double peso, Double altura, Integer cantidadDePasos, Double calorias, Long idUsuario) {
+    public ActividadFisica(Double peso, Double altura, Double distanciaTotal, Double caloriasQuemadas) {
         this.peso = peso;
         this.altura = altura;
-        this.cantidadDePasos = cantidadDePasos;
-        this.calorias = calorias;
-        this.idUsuario = idUsuario;
+        this.distanciaTotal = distanciaTotal;
+        this.caloriasQuemadas = caloriasQuemadas;
     }
 
-    // Getters y Setters
 
     public Long getIdActividad() {
         return idActividad;
@@ -59,27 +49,19 @@ public class ActividadFisica {
         this.altura = altura;
     }
 
-    public Integer getCantidadDePasos() {
-        return cantidadDePasos;
+    public Double getDistanciaTotal() {
+        return distanciaTotal;
     }
 
-    public void setCantidadDePasos(Integer cantidadDePasos) {
-        this.cantidadDePasos = cantidadDePasos;
+    public void setDistanciaTotal(Double distanciaTotal) {
+        this.distanciaTotal = distanciaTotal;
     }
 
-    public Double getCalorias() {
-        return calorias;
+    public Double getCaloriasQuemadas() {
+        return caloriasQuemadas;
     }
 
-    public void setCalorias(Double calorias) {
-        this.calorias = calorias;
-    }
-
-    public Long getIdUsuario() {
-        return idUsuario;
-    }
-
-    public void setIdUsuario(Long idUsuario) {
-        this.idUsuario = idUsuario;
+    public void setCaloriasQuemadas(Double caloriasQuemadas) {
+        this.caloriasQuemadas = caloriasQuemadas;
     }
 }
