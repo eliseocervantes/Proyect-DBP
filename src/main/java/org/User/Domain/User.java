@@ -1,6 +1,7 @@
 package org.User.Domain;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Email;
 import lombok.Data;
 
 import org.springframework.security.core.GrantedAuthority;
@@ -31,6 +32,7 @@ public class User implements UserDetails{
     @Column(name = "sex", nullable = false)
     private Sex sex;
 
+    @Email
     @Column(name = "email", nullable = false)
     private String email;
 
