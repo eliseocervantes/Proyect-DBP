@@ -42,6 +42,18 @@ public class User implements UserDetails{
     @Column(name = "calorie_goal", nullable = false)
     private int calorieGoal;
 
+    @Column(name = "weight")
+    private Double weight;
+
+    @Column(name = "height")
+    private Double height;
+
+    @Column(name = "total_burned_calories")
+    private Double totalBurnedCalories;
+
+    @Column(name = "total_distance_traveled")
+    private Double totalDistanceTraveled;
+
     @Column(name = "created_at", nullable = false)
     private ZonedDateTime createdAt;
 
@@ -80,12 +92,10 @@ public class User implements UserDetails{
         return true;
     }
 
-
-
     public User() {
     }
 
-    public User(String firstName, String lastName, Date birthDate, Sex sex, String email, String password, int calorieGoal) {
+    public User(String firstName, String lastName, Date birthDate, Sex sex, String email, String password, int calorieGoal, Double weight, Double height, Double totalBurnedCalories, Double totalDistanceTraveled) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.birthDate = birthDate;
@@ -93,54 +103,43 @@ public class User implements UserDetails{
         this.email = email;
         this.password = password;
         this.calorieGoal = calorieGoal;
+        this.weight = weight;
+        this.height = height;
+        this.totalBurnedCalories = totalBurnedCalories;
+        this.totalDistanceTraveled = totalDistanceTraveled;
     }
 
+    // Existing getters and setters...
 
-    public Long getId() {
-        return id;
+    public Double getWeight() {
+        return weight;
     }
 
-    public void setId(Long idUser) {
-        this.id = idUser;
+    public void setWeight(Double weight) {
+        this.weight = weight;
     }
 
-    public String getFirstName() {
-        return firstName;
+    public Double getHeight() {
+        return height;
     }
 
-    public void setName(String firstName) {
-        this.firstName = firstName;
+    public void setHeight(Double height) {
+        this.height = height;
     }
 
-    public String getLastName() {
-        return lastName;
+    public Double getTotalBurnedCalories() {
+        return totalBurnedCalories;
     }
 
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
+    public void setTotalBurnedCalories(Double totalBurnedCalories) {
+        this.totalBurnedCalories = totalBurnedCalories;
     }
 
-    public Date getBirthDate() {
-        return birthDate;
+    public Double getTotalDistanceTraveled() {
+        return totalDistanceTraveled;
     }
 
-    public void setBirthDate(Date birthDate) {
-        this.birthDate = birthDate;
-    }
-
-    public Sex getSex() {
-        return sex;
-    }
-
-    public void setSex(Sex sex) {
-        this.sex = sex;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
+    public void setTotalDistanceTraveled(Double totalDistanceTraveled) {
+        this.totalDistanceTraveled = totalDistanceTraveled;
     }
 }

@@ -5,7 +5,7 @@ import org.auth.dto.LoginReq;
 import org.auth.dto.RegisterReq;
 import org.auth.exceptions.UserAlreadyExistException;
 import org.user.domain.User;
-import org.user.infrastructure.UserRepository;
+import org.user.infraestructure.UserRepository;
 import org.config.JwtService;
 import org.springframework.stereotype.Service;
 
