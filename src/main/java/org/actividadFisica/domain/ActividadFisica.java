@@ -15,7 +15,7 @@ public class ActividadFisica {
     private Double distanciaTotal;
     private Double caloriasQuemadas;
 
-    public ActividadFisica() {}
+    public ActividadFisica()  {}
 
     public ActividadFisica(Double peso, Double altura, Double distanciaTotal, Double caloriasQuemadas) {
         this.peso = peso;
