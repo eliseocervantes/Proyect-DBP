@@ -54,4 +54,6 @@ public class Ruta {
     public void setUbicacionFinal(String ubicacionFinal) {
         this.ubicacionFinal = ubicacionFinal;
     }
+
+
 }
