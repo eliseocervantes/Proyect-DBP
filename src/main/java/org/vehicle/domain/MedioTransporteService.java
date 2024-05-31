@@ -1,6 +1,6 @@
-package org.mediotransporte.domain;
+package org.vehicle.domain;
 
-import org.mediotransporte.infrastructure.MedioTransporteRepository;
+import org.vehicle.infrastructure.MedioTransporteRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

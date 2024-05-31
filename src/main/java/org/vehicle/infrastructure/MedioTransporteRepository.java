@@ -1,6 +1,6 @@
-package org.mediotransporte.infrastructure;
+package org.vehicle.infrastructure;
 
-import org.mediotransporte.domain.MediosTransporte;
+import org.vehicle.domain.MediosTransporte;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

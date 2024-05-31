@@ -1,4 +1,4 @@
-package org.mediotransporte.domain;
+package org.vehicle.domain;
 
 import jakarta.persistence.*;
 import lombok.Data;

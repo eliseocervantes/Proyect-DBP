@@ -1,6 +1,6 @@
-package org.mediotransporte.aplication;
+package org.vehicle.aplication;
 
-import org.mediotransporte.domain.MedioTransporteService;
+import org.vehicle.domain.MedioTransporteService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

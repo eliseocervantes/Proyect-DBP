@@ -2,6 +2,8 @@ package org.ruta.domain;
 
 import jakarta.persistence.*;
 import lombok.Data;
+import org.alerta.domain.Alerta;
+import org.coordinate.domain.Coordinate;
 
 @Data
 @Entity
@@ -9,51 +11,92 @@ public class Ruta {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long idRuta;
-    private Double distancia;
-    private String ubicacionInicial;
-    private String ubicacionFinal;
+    private Long id;
+    private Double distance;
+    private String originName;
+    private String destinationName;
+    @OneToOne
+    private Coordinate originCoordinate;
+    @OneToOne
+    private Coordinate destinationCoordinate;
+    private Double burnedCalories;
+    @ManyToOne
+    private Alerta alerta;
 
     public Ruta() {}
 
-    public Ruta(Double distancia, String ubicacionInicial, String ubicacionFinal) {
-        this.distancia = distancia;
-        this.ubicacionInicial = ubicacionInicial;
-        this.ubicacionFinal = ubicacionFinal;
+    public Ruta(Double distance, String originName, String destinationName, Coordinate originCoordinate, Coordinate destinationCoordinate, Double burnedCalories, Alerta alerta) {
+        this.distance = distance;
+        this.originName = originName;
+        this.destinationName = destinationName;
+        this.originCoordinate = originCoordinate;
+        this.destinationCoordinate = destinationCoordinate;
+        this.burnedCalories = burnedCalories;
+        this.alerta = alerta;
     }
 
 
-    public Long getIdRuta() {
-        return idRuta;
+    public Long getId() {
+        return id;
     }
 
-    public void setIdRuta(Long idRuta) {
-        this.idRuta = idRuta;
+    public void setId(Long id) {
+        this.id = id;
     }
 
-    public Double getDistancia() {
-        return distancia;
+    public Double getDistance() {
+        return distance;
     }
 
-    public void setDistancia(Double distancia) {
-        this.distancia = distancia;
+    public void setDistance(Double distance) {
+        this.distance = distance;
     }
 
-    public String getUbicacionInicial() {
-        return ubicacionInicial;
+    public String getOriginName() {
+        return originName;
     }
 
-    public void setUbicacionInicial(String ubicacionInicial) {
-        this.ubicacionInicial = ubicacionInicial;
+    public void setOriginName(String originName) {
+        this.originName = originName;
     }
 
-    public String getUbicacionFinal() {
-        return ubicacionFinal;
+    public String getDestinationName() {
+        return destinationName;
     }
 
-    public void setUbicacionFinal(String ubicacionFinal) {
-        this.ubicacionFinal = ubicacionFinal;
+    public void setDestinationName(String destinationName) {
+        this.destinationName = destinationName;
     }
 
+    public Coordinate getOriginCoordinate() {
+        return originCoordinate;
+    }
 
+    public void setOriginCoordinate(Coordinate originCoordinate) {
+        this.originCoordinate = originCoordinate;
+    }
+
+    public Coordinate getDestinationCoordinate() {
+        return destinationCoordinate;
+    }
+
+    public void setDestinationCoordinate(Coordinate destinationCoordinate) {
+        this.destinationCoordinate = destinationCoordinate;
+    }
+
+    public Double getBurnedCalories() {
+        return burnedCalories;
+    }
+
+    public void setBurnedCalories(Double burnedCalories) {
+        this.burnedCalories = burnedCalories;
+    }
+
+    public Alerta getAlert() {
+        return alerta;
+    }
+
+    public void setAlert(Alerta alerta) {
+        this.alerta = alerta;
+    }
 }
